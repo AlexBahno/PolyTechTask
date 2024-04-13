@@ -1,0 +1,10 @@
+line_length:
+- 200 # warning
+- 300 # error
+identifier_name:
+  min_length:
+    warning: 1
+disabled_rules:
+- trailing_whitespace
+- redundant_string_enum_value
+- force_cast
