@@ -55,12 +55,16 @@ struct LaunchCellView: View {
                 description(details: details)
             }
             dateAndSuccessStack
-            articleLink
-                .onTapGesture {
-                    let vm = ArticleViewModel(url: launch.links?.articleLink ?? launch.links?.wikipedia ?? "")
-                    navController?.pushViewController(ArticleView(viewModel: vm), animated: true)
-                }
-            imageView
+            if let link = launch.links?.articleLink ?? launch.links?.wikipedia {
+                articleLink(link: link)
+                    .onTapGesture {
+                        let vm = ArticleViewModel(url: link)
+                        navController?.pushViewController(ArticleView(viewModel: vm), animated: true)
+                    }
+            }
+            if let image = imageLoader.image {
+                imageView(image: image)
+            }
         }
         .onAppear {
             self.imageLoader.loadImage(with: launch.links?.missionPatchSmall ?? "")
@@ -96,22 +100,20 @@ struct LaunchCellView: View {
         .padding(.top, 5)
     }
     
-    private var articleLink: some View {
-        Text("Link to the article: \(launch.links?.articleLink ?? launch.links?.wikipedia ?? "")")
+    private func articleLink(link: String) -> some View {
+        Text("Link to the article: \(link)")
             .font(.system(size: 18))
             .foregroundStyle(.black)
             .padding(.top, 5)
     }
     
-    private var imageView: some View {
+    private func imageView(image: UIImage) -> some View {
         HStack {
             Spacer()
             VStack {
-                if let image = imageLoader.image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                }
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
             }
             .frame(height: 130)
             .padding(.top, 5)
