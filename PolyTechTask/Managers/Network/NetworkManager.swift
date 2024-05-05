@@ -38,6 +38,9 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 let result = try? decoder.decode([Rocket].self, from: data)
                 guard let result = result else {
+                    if let cached = try? self?.rocketCache.getFromDisk(withName: SavingName.rockets.rawValue) {
+                        return completion(.success(cached))
+                    }
                     completion(.failure(NetworkError.cannnotParseData))
                     return
                 }
@@ -65,6 +68,9 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 let result = try? decoder.decode([Launch].self, from: data)
                 guard let result = result else {
+                    if let cached = try? self?.launchesCache.getFromDisk(withName: rocketId) {
+                        return completion(.success(cached))
+                    }
                     completion(.failure(NetworkError.cannnotParseData))
                     return
                 }

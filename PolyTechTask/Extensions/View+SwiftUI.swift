@@ -10,17 +10,6 @@ import SnapKit
 
 extension View {
     
-    func injectIn(controller vc: UIViewController) {
-        let controller = UIHostingController(rootView: self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.backgroundColor = .clear
-        vc.view.addSubview(controller.view)
-        
-        controller.view.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
-    }
-    
     func injectIn(view: UIView) {
         let controller = UIHostingController(rootView: self)
         controller.view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +17,7 @@ extension View {
         view.addSubview(controller.view)
         
         controller.view.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

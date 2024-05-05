@@ -23,7 +23,9 @@ struct RocketDetailsView: View {
                 VStack(alignment: .center) {
                     Spacer()
                     Text("There is no launches with this rocket")
+                        .multilineTextAlignment(.center)
                         .font(.system(size: 24))
+                        .padding(.horizontal, 8)
                     Spacer()
                 }
             }

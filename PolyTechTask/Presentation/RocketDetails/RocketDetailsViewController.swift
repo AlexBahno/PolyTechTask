@@ -21,7 +21,7 @@ class RocketDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var myView: RocketDetailsView?
+    private var myView: RocketDetailsView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

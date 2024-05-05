@@ -53,7 +53,7 @@ class RocketListViewController: UIViewController {
         self.view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
@@ -61,7 +61,7 @@ class RocketListViewController: UIViewController {
         self.view.addSubview(activityIndicator)
         
         activityIndicator.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
     

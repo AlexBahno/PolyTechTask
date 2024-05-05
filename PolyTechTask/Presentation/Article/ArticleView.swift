@@ -51,7 +51,7 @@ class ArticleView: UIViewController {
         webView.load(URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad))
         
         webView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }
